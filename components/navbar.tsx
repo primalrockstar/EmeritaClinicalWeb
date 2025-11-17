@@ -24,13 +24,13 @@ export function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">ProMedixEMS</span>
-            <div className="h-16 w-auto flex items-center">
+            <div className="h-20 w-auto flex items-center">
               <Image
                 src="/images/ProMedixEMSLOGO.png"
                 alt="ProMedixEMS Logo"
-                width={280}
-                height={64}
-                className="h-16 w-auto"
+                width={320}
+                height={80}
+                className="h-20 w-auto"
                 priority
               />
             </div>
@@ -78,9 +78,9 @@ export function Navbar() {
                 <Image
                   src="/images/ProMedixEMSLOGO.png"
                   alt="ProMedixEMS Logo"
-                  width={220}
-                  height={52}
-                  className="h-13 w-auto"
+                  width={260}
+                  height={64}
+                  className="h-16 w-auto"
                 />
               </Link>
               <button
