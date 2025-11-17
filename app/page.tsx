@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { CheckCircle, Users, BookOpen, Smartphone } from "lucide-react"
+import { CheckCircle, Users, BookOpen, Smartphone, Zap, FileText, Mic, Activity, Target, Pill, ClipboardCheck } from "lucide-react"
 
 export default function Home() {
   return (
@@ -32,8 +32,133 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* ProMedixEMS Suite Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              The Complete ProMedixEMS<sup>TM</sup> Suite
+            </h2>
+            <p className="mt-4 text-muted-foreground md:text-xl">
+              From EMT-B to Paramedic — comprehensive training tools for every level
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {/* Core EMT */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
+              <CardHeader>
+                <Smartphone className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Core EMT</CardTitle>
+                <CardDescription>
+                  Essential training for the EMT-B student
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* Advance AEMT */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-secondary/20">
+              <CardHeader>
+                <Zap className="h-10 w-10 mb-2 text-secondary" />
+                <CardTitle>Advance AEMT</CardTitle>
+                <CardDescription>
+                  Next-level skills for the advancing provider
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* Paramedic Elite */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
+              <CardHeader>
+                <Target className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>Paramedic Elite</CardTitle>
+                <CardDescription>
+                  Advanced neuro, cardiac, trauma, and critical care mastery
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* FlashLearn */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-accent/20">
+              <CardHeader>
+                <BookOpen className="h-10 w-10 mb-2 text-accent" />
+                <CardTitle>FlashLearn</CardTitle>
+                <CardDescription>
+                  Fast, focused, spaced-repetition EMS study
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* PCR Lab */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
+              <CardHeader>
+                <FileText className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>PCR Lab</CardTitle>
+                <CardDescription>
+                  Realistic case-based documentation training
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* VoiceNotes */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-secondary/20">
+              <CardHeader>
+                <Mic className="h-10 w-10 mb-2 text-secondary" />
+                <CardTitle>VoiceNotes</CardTitle>
+                <CardDescription>
+                  Lecture recording + instant transcription built for EMS
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* RhythmLab */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
+              <CardHeader>
+                <Activity className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>RhythmLab</CardTitle>
+                <CardDescription>
+                  Master ECG interpretation, one rhythm at a time
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* ScenarioDeck */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-accent/20">
+              <CardHeader>
+                <Target className="h-10 w-10 mb-2 text-accent" />
+                <CardTitle>ScenarioDeck</CardTitle>
+                <CardDescription>
+                  High-yield medical and trauma simulations on demand
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* SkillCheck */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
+              <CardHeader>
+                <ClipboardCheck className="h-10 w-10 mb-2 text-primary" />
+                <CardTitle>SkillCheck</CardTitle>
+                <CardDescription>
+                  Track and reinforce essential EMT/AEMT/Medic skills
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* MedicationsX */}
+            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-secondary/20">
+              <CardHeader>
+                <Pill className="h-10 w-10 mb-2 text-secondary" />
+                <CardTitle>MedicationsX</CardTitle>
+                <CardDescription>
+                  Essential EMS pharmacology, simplified
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Section */}
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -56,9 +181,9 @@ export default function Home() {
             <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-secondary/20">
               <CardHeader>
                 <Smartphone className="h-10 w-10 mb-2 text-secondary" />
-                <CardTitle>Mobile App</CardTitle>
+                <CardTitle>Mobile Apps</CardTitle>
                 <CardDescription>
-                  Learn on-the-go with our EMT-B mobile application
+                  Learn on-the-go with our mobile applications
                 </CardDescription>
               </CardHeader>
             </Card>
