@@ -1,13 +1,26 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
-import { Check } from "lucide-react"
-import fs from "fs"
-import path from "path"
+
+import fs from 'fs'
+import path from 'path'
+import Link from 'next/link'
+import { Check } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import CheckoutButton from '@/components/checkout-button'
+
+interface PricingPlan {
+  id: string
+  name: string
+  billingPeriod: string
+  price: string
+  highlightFeatures: string[]
+  stripePriceId?: string
+  checkoutUrlPlaceholder?: string
+}
 
 export default function PricingPage() {
-  const pricingDataPath = path.join(process.cwd(), "data", "pricing.json")
-  const pricingPlans = JSON.parse(fs.readFileSync(pricingDataPath, "utf-8"))
+  const pricingDataPath = path.join(process.cwd(), 'data', 'pricing.json')
+  const pricingPlans: PricingPlan[] = JSON.parse(fs.readFileSync(pricingDataPath, 'utf-8'))
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -30,19 +43,25 @@ export default function PricingPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-            {pricingPlans.map((plan: any) => (
+            {pricingPlans.map((plan) => (
               <Card key={plan.id}>
                 <CardHeader>
                   <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription>{plan.billingPeriod === 'coming_soon' ? 'Coming Soon' : plan.billingPeriod === 'contact' ? 'Contact us for details' : null}</CardDescription>
+                  <CardDescription>
+                    {plan.billingPeriod === 'coming_soon'
+                      ? 'Coming Soon'
+                      : plan.billingPeriod === 'contact'
+                      ? 'Contact us for details'
+                      : null}
+                  </CardDescription>
                   <div className="mt-4">
                     <span className="text-4xl font-bold">{plan.price}</span>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
-                    {plan.highlightFeatures.map((feature: string, index: number) => (
-                      <li key={index} className="flex items-center gap-2">
+                    {plan.highlightFeatures.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
                         <Check className="h-5 w-5 text-primary flex-shrink-0" />
                         <span className="text-sm">{feature}</span>
                       </li>
@@ -52,18 +71,21 @@ export default function PricingPage() {
                 <CardFooter>
                   {plan.billingPeriod === 'coming_soon' || plan.billingPeriod === 'contact' ? (
                     <Button asChild className="w-full" variant="outline">
-                      <Link href={plan.checkoutUrlPlaceholder}>{plan.billingPeriod === 'contact' ? 'Contact Us' : 'Coming Soon'}</Link>
+                      <Link href={plan.checkoutUrlPlaceholder || '#'}>{plan.billingPeriod === 'contact' ? 'Contact Us' : 'Coming Soon'}</Link>
                     </Button>
                   ) : (
-                    <Button asChild className="w-full">
-                      <a href={plan.checkoutUrlPlaceholder} target="_blank" rel="noopener noreferrer">Buy Now</a>
-                    </Button>
+                    <CheckoutButton priceId={plan.stripePriceId || ''} label="Buy Now" className="w-full" />
                   )}
                 </CardFooter>
               </Card>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Support Contacts */}
+      <section className="w-full py-4 bg-muted text-center text-xs text-muted-foreground">
+        For payment issues: <a href="mailto:payments@webconnect360.com" className="underline">payments@webconnect360.com</a> | Support: <a href="mailto:tech@webconnect360.com" className="underline">tech@webconnect360.com</a>
       </section>
     </div>
   )
