@@ -8,14 +8,15 @@ const navigation = {
     { name: "For Programs", href: "/for-programs" },
   ],
   company: [
-    { name: "About", href: "#" },
+    { name: "About", href: "/about" },
     { name: "Blog", href: "#" },
     { name: "Careers", href: "#" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
+    { name: "Legal notice", href: "/about#legal" },
+    { name: "Privacy", href: "/privacy" },
+    { name: "Terms", href: "/terms" },
   ],
 }
 
@@ -32,6 +33,16 @@ export function Footer() {
             <p className="text-sm leading-6 text-muted-foreground">
               Empowering EMS education with innovative digital solutions.
             </p>
+            <div className="rounded-2xl border border-white/10 p-4 text-sm text-muted-foreground shadow-inner">
+              <p className="font-semibold text-foreground">About ProMedixEMS™</p>
+              <p className="mt-2">
+                Founded by Emergency Medical Technician and software designer Shaun Williamson, ProMedixEMS™ is a modern suite of EMS learning tools designed to enhance traditional EMT, AEMT, and Paramedic education.
+              </p>
+              <p className="mt-2">
+                With adaptive study modules, medication guides, rhythm labs, documentation practice, and more, the platform helps students learn faster and providers stay sharp.
+                Not a replacement for accredited EMS training—an enhancement to support it.
+              </p>
+            </div>
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
@@ -80,6 +91,7 @@ export function Footer() {
           <p className="text-xs leading-5 text-muted-foreground">
             &copy; {new Date().getFullYear()} ProMedixEMS<sup>TM</sup>. All rights reserved.<br />
             A <a href="https://webconnect360.com" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">webconnect360</a> product: designed, built, and supported for EMS excellence.
+            <br />ProMedixEMS™ is an independent EMS education tool and is not affiliated with NREMT, AAOS, or any certifying body.
           </p>
         </div>
       </div>

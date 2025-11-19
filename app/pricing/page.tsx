@@ -85,7 +85,9 @@ export default function PricingPage() {
 
       {/* Support Contacts */}
       <section className="w-full py-4 bg-muted text-center text-xs text-muted-foreground">
-        For payment issues: <a href="mailto:payments@webconnect360.com" className="underline">payments@webconnect360.com</a> | Support: <a href="mailto:tech@webconnect360.com" className="underline">tech@webconnect360.com</a>
+        For payment issues: <a href="mailto:payments@webconnect360.com" className="underline">payments@webconnect360.com</a> |
+        Customer support: <a href="mailto:support@webconnect360.com" className="underline">support@webconnect360.com</a> |
+        Technical escalations: <a href="mailto:tech@webconnect360.com" className="underline">tech@webconnect360.com</a>
       </section>
     </div>
   )

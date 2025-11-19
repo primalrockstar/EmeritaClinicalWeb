@@ -134,6 +134,18 @@ export default function ContactPage() {
                           </a>
                         </CardDescription>
                         <CardDescription className="mt-2">
+                          Program Demos (EMT-B only): <br />
+                          <a href="mailto:demo@webconnect360.com" className="text-foreground hover:underline">
+                            demo@webconnect360.com
+                          </a>
+                        </CardDescription>
+                        <CardDescription className="mt-2">
+                          Customer Support & Accounts: <br />
+                          <a href="mailto:support@webconnect360.com" className="text-foreground hover:underline">
+                            support@webconnect360.com
+                          </a>
+                        </CardDescription>
+                        <CardDescription className="mt-2">
                           Technical Help: <br />
                           <a href="mailto:tech@webconnect360.com" className="text-foreground hover:underline">
                             tech@webconnect360.com
@@ -198,8 +210,8 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Yes! We provide personalized demos for training programs and institutions. 
-                  Contact us at hello@webconnect360.com to schedule a demonstration.
+                  Yes! We provide personalized demos for training programs and institutions.
+                  Only the EMT-B Core experience is demo-ready today—email <a href="mailto:demo@webconnect360.com" className="underline">demo@webconnect360.com</a> with your program details and we&apos;ll coordinate a walkthrough.
                 </p>
               </CardContent>
             </Card>
@@ -209,8 +221,7 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Use hello@webconnect360.com for general questions, tech@webconnect360.com for 
-                  technical support, and payments@webconnect360.com for billing issues.
+                  Use hello@webconnect360.com for general questions, demo@webconnect360.com for EMT-B demos, support@webconnect360.com for account or subscription issues, tech@webconnect360.com for technical troubleshooting, and payments@webconnect360.com for billing.
                 </p>
               </CardContent>
             </Card>

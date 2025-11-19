@@ -1,113 +1,397 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Image from "next/image"
 import Link from "next/link"
-import { CheckCircle, Users, BookOpen, Smartphone } from "lucide-react"
+import apps from "@/data/apps.json"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Activity,
+  Apple,
+  ArrowUpRight,
+  Check,
+  Layers,
+  Play,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  type LucideIcon,
+} from "lucide-react"
+
+type AppStatus = "available" | "coming_soon"
+
+type AppEntry = {
+  id: string
+  name: string
+  logo: string
+  status: AppStatus
+  description: string
+  features: string[]
+  appStoreUrl: string
+  playStoreUrl: string
+}
+
+const appsData = apps as AppEntry[]
+const flagshipIds = new Set(["emt-b", "aemt", "paramedic"])
+const orderedApps = [
+  ...appsData.filter((app) => flagshipIds.has(app.id)),
+  ...appsData.filter((app) => !flagshipIds.has(app.id)),
+]
+
+const marqueeItems = [
+  "NREMT-aligned competencies",
+  "Scenario labs + PCR practice",
+  "Adaptive flashcards",
+  "Voice-first documentation",
+  "Real-time cohort analytics",
+  "App + mobile parity in 2026",
+]
+
+type Pillar = {
+  title: string
+  body: string
+  points: string[]
+  Icon: LucideIcon
+}
+
+const highlightPillars: Pillar[] = [
+  {
+    title: "Accreditation-ready content",
+    body: "Every skill, medication, and scenario is mapped to EMT, AEMT, and Paramedic competencies with instructor notes built in.",
+    points: ["State + NREMT tagging", "Auto-generated lesson briefs"],
+    Icon: ShieldCheck,
+  },
+  {
+    title: "Immersive training lab",
+    body: "High-fidelity scenario labs, PCR drills, and flashcards feel like the field so learners can rehearse decisions before the call.",
+    points: ["Scenario & PCR sync", "VoiceNotes + AI summaries"],
+    Icon: Layers,
+  },
+  {
+    title: "Program intelligence",
+    body: "Live dashboards reveal cohort progress, remediation needs, and readiness signals before certification day.",
+    points: ["Cohort analytics", "Automated skill tracking"],
+    Icon: Activity,
+  },
+]
+
+const heroStats = [
+  { value: "140+", label: "Programs tracking the beta" },
+  { value: "1.2k", label: "Learners testing Core EMT" },
+  { value: "2026", label: "App Store + Google Play launch" },
+]
+
+const statusStyles: Record<AppStatus, { label: string; className: string }> = {
+  available: {
+    label: "Available in platform beta",
+    className: "bg-emerald-500/10 text-emerald-200 border-emerald-500/30",
+  },
+  coming_soon: {
+    label: "Arriving with 2026 releases",
+    className: "bg-amber-400/10 text-amber-100 border-amber-400/30",
+  },
+}
 
 export default function Home() {
+  const flagshipApps = orderedApps.filter((app) => flagshipIds.has(app.id))
+
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-primary/10 via-secondary/5 to-background relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px]" />
-        <div className="container px-4 md:px-6 mx-auto relative z-10">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Empowering EMS Education
+    <div className="flex flex-col gap-16 pb-20">
+      <section className="relative overflow-hidden hero-gradient grid-overlay py-16 md:py-24 lg:py-32">
+        <div className="container relative z-10 mx-auto grid gap-10 px-4 md:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
+              <span className="text-primary">ProMedixEMS™</span>
+              Platform
+            </div>
+            <div className="space-y-5">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                Built by EMS educators for EMT, AEMT, and Paramedic mastery.
               </h1>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Innovative digital solutions for EMS training programs and EMT-B students. 
-                Transform your learning experience with ProMedixEMS<sup>TM</sup>.
+              <p className="max-w-2xl text-lg text-muted-foreground md:text-xl">
+                Scenario labs, PCR practice, medication drills, and flashcards all live in one platform so cohorts can train smarter today and launch on iOS and Android in 2026.
               </p>
             </div>
-            <div className="space-x-4">
-              <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
-                <Link href="/contact">Get Started</Link>
+            <div className="flex flex-wrap gap-4">
+              <Button asChild size="lg" className="px-8 text-base">
+                <Link href="/contact" className="flex items-center gap-2">
+                  Request a program preview
+                  <ArrowUpRight className="h-5 w-5" />
+                </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="glass border-primary/30">
-                <Link href="/suite">Explore Suite</Link>
+              <Button asChild variant="outline" size="lg" className="border-white/30 px-8 text-base">
+                <Link href="/suite">Explore the suite</Link>
               </Button>
             </div>
+            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="space-y-1">
+                  <p className="text-3xl font-semibold text-foreground">{stat.value}</p>
+                  <p>{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-6">
+            <Card className="border-white/10">
+              <CardHeader className="space-y-3">
+                <CardTitle className="flex items-center gap-2 text-xl">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  Every app. One neon platform.
+                </CardTitle>
+                <CardDescription>
+                  Crafted alongside active EMS instructors so the official ProMedix EMT logos lead learners through content that feels like the classroom, skills lab, and street.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex flex-wrap gap-3 text-xs font-semibold tracking-wide text-foreground">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2">
+                    <Apple className="h-4 w-4" /> App Store · 2026
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2">
+                    <Play className="h-4 w-4" /> Google Play · 2026
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2">
+                    🔵 ProMedixEMS.com · Beta now
+                  </span>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-sm text-muted-foreground">
+                    All releases stay synced between the web platform, iOS, and Android so programs can approve one
+                    content set, then deploy everywhere in 2026.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-white/10">
+              <CardHeader className="space-y-2">
+                <CardTitle className="text-base uppercase tracking-[0.3em] text-muted-foreground">
+                  Flagship tracks
+                </CardTitle>
+                <CardDescription>New ProMedix EMT logos showcased across the entire site.</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-wrap items-center gap-6">
+                {flagshipApps.map((app) => (
+                  <Image
+                    key={app.id}
+                    src={app.logo}
+                    alt={`${app.name} logo`}
+                    width={200}
+                    height={80}
+                    className="h-14 w-auto object-contain drop-shadow-lg"
+                    priority={app.id === "emt-b"}
+                  />
+                ))}
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Features Overview */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Why Choose ProMedixEMS<sup>TM</sup>
-            </h2>
-            <p className="mt-4 text-muted-foreground md:text-xl">
-              Comprehensive tools designed for modern EMS education
+      <section className="container mx-auto px-4 md:px-6">
+        <Card className="border-white/10">
+          <CardContent className="grid gap-8 p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-[0.5em] text-muted-foreground">About ProMedixEMS™</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Modern EMS training built by EMT Shaun Williamson.
+              </h2>
+              <p className="text-muted-foreground md:text-lg">
+                What began as a personal study tool during Shaun’s EMT-B training quickly evolved into a complete suite of apps designed to help EMS students and providers learn faster and perform with confidence. Our mission is simple: enhance EMS education—not replace it.
+              </p>
+              <p className="text-muted-foreground">
+                The growing ProMedixEMS™ suite includes study modules, medication companions, rhythm trainers, flashcard systems, documentation labs, and voice-note tools—all designed around real EMS workflows.
+              </p>
+            </div>
+            <div className="space-y-4 rounded-2xl border border-white/10 p-6">
+              <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground">Mission</p>
+              <p className="text-lg font-semibold">
+                EMS learning should be modern, intelligent, and accessible.
+              </p>
+              <p className="text-muted-foreground text-sm">
+                ProMedixEMS™ exists to support classroom learning, improve retention, and keep providers sharp on shift—with neon glass polish that matches the new logo system.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="container mx-auto px-4 md:px-6">
+        <div className="marquee-blur flex flex-wrap items-center justify-center gap-4 rounded-2xl px-6 py-4 text-sm text-muted-foreground">
+          {marqueeItems.map((item) => (
+            <span key={item} className="inline-flex items-center gap-2 text-foreground/80">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              {item}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 md:px-6">
+        <div className="mb-10 space-y-4 text-center">
+          <p className="text-xs uppercase tracking-[0.5em] text-muted-foreground">Designed with EMS educators</p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            Glass-card storytelling with enterprise depth
+          </h2>
+          <p className="mx-auto max-w-3xl text-muted-foreground md:text-lg">
+            Every section elevates EMS-specific storytelling—skills matrices, protocol refreshers, and cohort dashboards presented in a clear, high-contrast layout built for night crews and classroom displays alike.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {highlightPillars.map(({ title, body, points, Icon }) => (
+            <Card key={title} className="border-white/10">
+              <CardHeader className="space-y-4">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div className="space-y-2">
+                  <CardTitle className="text-2xl">{title}</CardTitle>
+                  <CardDescription>{body}</CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {points.map((point) => (
+                  <div key={point} className="flex items-center gap-2 text-sm text-foreground">
+                    <Check className="h-4 w-4 text-primary" />
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="container mx-auto space-y-8 px-4 md:px-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.5em] text-muted-foreground">Platform lineup</p>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">All apps live on this platform first</h2>
+            <p className="max-w-2xl text-muted-foreground">
+              Whether it&apos;s the EMT core curriculum, MedicationsX reference, or RhythmLab for ECG mastery, everything is
+              orchestrated inside the neon interface before it arrives on the stores in 2026.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
-              <CardHeader>
-                <BookOpen className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>Complete Suite</CardTitle>
-                <CardDescription>
-                  10 specialized apps from EMT-B to Paramedic level
-                </CardDescription>
+          <Button asChild variant="outline" className="self-start border-white/30">
+            <Link href="/suite">See the detailed suite overview</Link>
+          </Button>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {orderedApps.map((app) => (
+            <Card key={app.id} className="border-white/10">
+              <CardHeader className="space-y-4">
+                <div className="flex items-center justify-between gap-4">
+                  <Image
+                    src={app.logo}
+                    alt={`${app.name} logo`}
+                    width={200}
+                    height={80}
+                    className="h-12 w-auto object-contain"
+                  />
+                  <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${statusStyles[app.status as AppStatus]?.className}`}>
+                    {statusStyles[app.status as AppStatus]?.label ?? "In development"}
+                  </span>
+                </div>
+                <div className="space-y-2">
+                  <CardTitle>{app.name}</CardTitle>
+                  <CardDescription>{app.description}</CardDescription>
+                </div>
               </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  {app.features.slice(0, 3).map((feature) => (
+                    <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1">
+                    <Apple className="h-3.5 w-3.5" /> 2026
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1">
+                    <Play className="h-3.5 w-3.5" /> 2026
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1">
+                    🔵 Platform first
+                  </span>
+                </div>
+              </CardContent>
             </Card>
-            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-secondary/20">
-              <CardHeader>
-                <Smartphone className="h-10 w-10 mb-2 text-secondary" />
-                <CardTitle>Mobile First</CardTitle>
-                <CardDescription>
-                  Learn on-the-go with our mobile applications
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-primary/20">
-              <CardHeader>
-                <Users className="h-10 w-10 mb-2 text-primary" />
-                <CardTitle>For Programs</CardTitle>
-                <CardDescription>
-                  Tailored solutions for training programs and institutions
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="glass-card hover:shadow-xl transition-all duration-300 hover:scale-105 border-accent/20">
-              <CardHeader>
-                <CheckCircle className="h-10 w-10 mb-2 text-accent" />
-                <CardTitle>NREMT Aligned</CardTitle>
-                <CardDescription>
-                  Content aligned with National Registry standards
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px]" />
-        <div className="container px-4 md:px-6 mx-auto relative z-10">
-          <div className="flex flex-col items-center space-y-4 text-center glass-card p-12 rounded-2xl max-w-4xl mx-auto">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Ready to Transform Your EMS Education?
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl">
-                Join thousands of students and programs using ProMedixEMS<sup>TM</sup>
+      <section className="container mx-auto px-4 md:px-6">
+        <Card className="border-white/10">
+          <CardContent className="grid gap-8 p-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-[0.5em] text-muted-foreground">Availability · 2026</p>
+              <h3 className="text-3xl font-semibold">
+                Every module ships simultaneously to ProMedixEMS.com, the App Store, and Google Play.
+              </h3>
+              <p className="text-muted-foreground">
+                Programs can pilot the neon platform today, then flip the switch for learners once the stores approve the
+                builds. All data, cohorts, and scenarios stay synced.
               </p>
+              <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1">
+                  <Users className="h-4 w-4 text-primary" /> Student + program roles
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1">
+                  <Sparkles className="h-4 w-4 text-secondary" /> Neon/glass UI preserved everywhere
+                </span>
+              </div>
             </div>
-            <div className="space-x-4">
-              <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="glass border-primary/30">
-                <Link href="/pricing">View Pricing</Link>
-              </Button>
+            <div className="space-y-4 rounded-2xl border border-white/10 p-6">
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-primary/15 p-3 text-primary">
+                  <Apple className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-sm uppercase tracking-wide text-muted-foreground">App Store</p>
+                  <p className="text-lg font-semibold">Q1 2026 submission window</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-secondary/15 p-3 text-secondary">
+                  <Play className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-sm uppercase tracking-wide text-muted-foreground">Google Play</p>
+                  <p className="text-lg font-semibold">Q1 2026 beta tracks</p>
+                </div>
+              </div>
+              <div className="rounded-2xl bg-white/5 p-4 text-sm text-muted-foreground">
+                ProMedixEMS.com hosts the EMT-B Core experience today so programs can run guided demos and faculty
+                reviews while the remaining suite tracks finalize for the coordinated 2026 App Store and Google Play launches.
+              </div>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </section>
-    </div>
-  );
+
+      <section className="container mx-auto px-4 md:px-6">
+        <Card className="border-white/10">
+          <CardContent className="flex flex-col gap-6 p-8 text-center">
+            <p className="text-xs uppercase tracking-[0.5em] text-muted-foreground">Take action</p>
+            <h3 className="text-3xl font-bold sm:text-4xl">
+              Ready to put the neon glass platform in front of your cohort?
+            </h3>
+            <p className="mx-auto max-w-3xl text-muted-foreground md:text-lg">
+              Request a guided tour, secure branded onboarding with the new EMT logos, and lock in App Store + Google
+              Play launch notifications for 2026.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Button asChild size="lg" className="px-10 text-base">
+                <Link href="/contact">Book a walkthrough</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-white/30 px-10 text-base">
+                <Link href="/suite">Download the suite brief</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+      </div>
+  )
 }

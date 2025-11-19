@@ -1,7 +1,8 @@
 [
   {
     "id": "emt-b",
-    "name": "EMT App",
+    "name": "Core EMT",
+    "logo": "/images/ProMedEMT-blogo.png",
     "status": "available",
     "description": "Comprehensive EMT-B study and practice app for students and programs.",
     "features": [
@@ -17,8 +18,9 @@
   },
   {
     "id": "aemt",
-    "name": "AEMT App",
-    "status": "coming_soon",
+    "name": "Advance AEMT",
+    "logo": "/images/ProMedAEMTlogo.png",
+  "status": "coming_soon",
     "description": "Advanced EMT app with expanded content and practice tools.",
     "features": [
       "Advanced scenario practice",
@@ -31,13 +33,60 @@
   },
   {
     "id": "paramedic",
-    "name": "Paramedic App",
-    "status": "coming_soon",
+    "name": "Paramedic Elite",
+    "logo": "/images/ProMedParamediclogo.png",
+  "status": "coming_soon",
     "description": "Paramedic-level app for advanced EMS education.",
     "features": [
       "Critical care scenarios",
       "12-lead ECG trainer",
       "Advanced skills modules"
+    ],
+    "appStoreUrl": "#",
+    "playStoreUrl": "#",
+    "screenshots": []
+  }
+ ,
+  {
+    "id": "medicationsx",
+    "name": "MedicationsX",
+    "logo": "/images/medX.png",
+  "status": "coming_soon",
+  "description": "Essential EMS pharmacology, dosing reference, and quick-drug guides releasing with the 2026 suite.",
+    "features": [
+      "Quick dosing charts",
+      "Mechanism & contraindications",
+      "Scenario-based medication checks"
+    ],
+    "appStoreUrl": "#",
+    "playStoreUrl": "#",
+    "screenshots": []
+  },
+  {
+    "id": "flashlearn",
+    "name": "FlashLearn",
+    "logo": "/images/flashlearn.png",
+  "status": "coming_soon",
+  "description": "Fast, focused spaced-repetition flashcards tailored for EMS students, slated for App Store and Google Play in 2026.",
+    "features": [
+      "Spaced repetition algorithm",
+      "Custom decks & progress stats",
+      "Import/export study sets"
+    ],
+    "appStoreUrl": "#",
+    "playStoreUrl": "#",
+    "screenshots": []
+  },
+  {
+    "id": "rhythmlab",
+    "name": "RhythmLab",
+    "logo": "/images/rhythmlab.png",
+    "status": "coming_soon",
+    "description": "Master ECG interpretation, one rhythm at a time.",
+    "features": [
+      "12-lead practice",
+      "Arrhythmia identification drills",
+      "Paced rhythm simulations"
     ],
     "appStoreUrl": "#",
     "playStoreUrl": "#",
