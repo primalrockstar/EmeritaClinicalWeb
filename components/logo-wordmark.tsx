@@ -41,6 +41,7 @@ export function LogoWordmark({
           Emerita
         </span>
         <span className="text-foreground ml-1">Clinical</span>
+        <sup className="ml-1 text-[0.45em] font-semibold text-muted-foreground/80 align-super">™</sup>
       </span>
       {subtitle !== null && (
         <span className="text-[0.6rem] font-semibold tracking-[0.4em] text-muted-foreground/70">

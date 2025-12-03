@@ -1,89 +1,104 @@
 [
   {
     "id": "emt-b",
-    "name": "Core EMT",
+    "name": "EmeritaClinical EMT-B Core",
+    "shortName": "EMT-B",
+    "tier": "core",
     "status": "available",
-    "description": "Comprehensive EMT-B study and practice app for students and programs.",
+    "tagline": "The flagship curriculum with 41 chapters, quizzes, and NREMT simulations.",
+    "description": "Built from Shaun Williamson's original EMT-B study engine so learners can review chapters, drills, and simulations that map exactly to NREMT objectives.",
+    "price": 29,
+    "badge": "Flagship curriculum",
     "features": [
-      "Scenario-based learning",
-      "Built-in Flashcards",
-      "PCR Practice Lab",
-      "VoiceNotes Recorder",
-      "Exam Prep"
+      "41 instructor-aligned chapters",
+      "Scenario + quiz mode",
+      "NREMT-style simulations"
     ],
-    "appStoreUrl": "#",
-    "playStoreUrl": "#",
-    "screenshots": ["/public/screenshots/emtb-1.png", "/public/screenshots/emtb-2.png"]
+    "stripeCheckoutUrl": "https://buy.stripe.com/6oUfZie4x5OAcRUbx68k804",
+    "previewLink": "/contact?app=emt-b",
+    "bundleEligible": true
+  },
+  {
+    "id": "chapterflash-emt",
+    "name": "ChapterFlash EMT",
+    "shortName": "ChapterFlashEMT",
+    "tier": "extension",
+    "status": "available",
+    "tagline": "Intelligent spaced-repetition flashcards synced for EMT-B.",
+    "description": "700+ cards with spaced repetition so EMT students can hammer through weak spots faster than paper decks.",
+    "price": 29,
+    "badge": "Flashcards engine",
+    "features": [
+      "Spaced repetition cycles",
+      "700+ EMT-B prompts",
+      "Syncs with Core EMT"
+    ],
+    "stripeCheckoutUrl": "https://buy.stripe.com/eVq6oI2lPccY7xA30A8k803",
+    "previewLink": "/contact?app=chapterflash",
+    "bundleEligible": true
+  },
+  {
+    "id": "pcr-trainer-pro",
+    "name": "PCR Trainer PRO",
+    "shortName": "PCR Trainer",
+    "tier": "extension",
+    "status": "available",
+    "tagline": "Advanced documentation engine. Master the Patient Care Report.",
+    "description": "Guided ePCR reps with QA scoring, scenario syncing, and documentation tips that feel like a live preceptor.",
+    "price": 29,
+    "badge": "Documentation lab",
+    "features": [
+      "Realistic ePCR workflows",
+      "Automated QA scoring",
+      "Scenario-linked prompts"
+    ],
+    "stripeCheckoutUrl": "https://buy.stripe.com/5kQeVe8Kd6SE4loat28k805",
+    "previewLink": "/contact?app=pcr",
+    "bundleEligible": true
+  },
+  {
+    "id": "medications-ems",
+    "name": "MedicationsEMS",
+    "shortName": "Medications",
+    "tier": "extension",
+    "status": "coming_soon",
+    "tagline": "Pharmacology guide. Indications & interactions by scope of practice.",
+    "description": "Pocketable pharmacology reference with dosing charts, contraindications, and interaction checks for every EMT level.",
+    "features": [
+      "Protocol-aligned dosing",
+      "Indications & contraindications",
+      "Interaction lookups"
+    ],
+    "bundleEligible": false
   },
   {
     "id": "aemt",
-    "name": "Advance AEMT",
-  "status": "coming_soon",
-    "description": "Advanced EMT app with expanded content and practice tools.",
+    "name": "EmeritaClinical AEMT",
+    "shortName": "AEMT",
+    "tier": "roadmap",
+    "status": "in_development",
+    "tagline": "Intermediate scope with invasive skills and expanded medications.",
+    "description": "IV/IO drills, airway adjuncts, and pharmacology refreshers for crews stepping into advanced practice.",
     "features": [
-      "Advanced scenario practice",
-      "Expanded pharmacology",
-      "Skill tracking"
+      "Scenario labs",
+      "Competency matrix",
+      "Instructor analytics"
     ],
-    "appStoreUrl": "#",
-    "playStoreUrl": "#",
-    "screenshots": []
+    "bundleEligible": false
   },
   {
     "id": "paramedic",
-    "name": "Paramedic Elite",
-  "status": "coming_soon",
-    "description": "Paramedic-level app for advanced EMS education.",
+    "name": "EmeritaClinical Paramedic",
+    "shortName": "Paramedic",
+    "tier": "roadmap",
+    "status": "in_development",
+    "tagline": "Advanced ALS training layered on top of EMT and AEMT mastery.",
+    "description": "12-lead interpretation, advanced airways, ALS algorithms, and infusion management built for capstone prep.",
     "features": [
-      "Critical care scenarios",
-      "12-lead ECG trainer",
-      "Advanced skills modules"
+      "Telemetry-ready modules",
+      "ALS medication library",
+      "Preceptor workflow notes"
     ],
-    "appStoreUrl": "#",
-    "playStoreUrl": "#",
-    "screenshots": []
-  }
- ,
-  {
-    "id": "medicationsx",
-    "name": "MedicationsX",
-  "status": "coming_soon",
-  "description": "Essential EMS pharmacology, dosing reference, and quick-drug guides releasing with the 2026 suite.",
-    "features": [
-      "Quick dosing charts",
-      "Mechanism & contraindications",
-      "Scenario-based medication checks"
-    ],
-    "appStoreUrl": "#",
-    "playStoreUrl": "#",
-    "screenshots": []
-  },
-  {
-    "id": "flashlearn",
-    "name": "FlashLearn",
-  "status": "coming_soon",
-  "description": "Fast, focused spaced-repetition flashcards tailored for EMS students, slated for App Store and Google Play in 2026.",
-    "features": [
-      "Spaced repetition algorithm",
-      "Custom decks & progress stats",
-      "Import/export study sets"
-    ],
-    "appStoreUrl": "#",
-    "playStoreUrl": "#",
-    "screenshots": []
-  },
-  {
-    "id": "rhythmlab",
-    "name": "RhythmLab",
-    "status": "coming_soon",
-    "description": "Master ECG interpretation, one rhythm at a time.",
-    "features": [
-      "12-lead practice",
-      "Arrhythmia identification drills",
-      "Paced rhythm simulations"
-    ],
-    "appStoreUrl": "#",
-    "playStoreUrl": "#",
-    "screenshots": []
+    "bundleEligible": false
   }
 ]
