@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, Sparkles, Zap, Award, Clock, TrendingUp, Shield, Users } from "lucide-react"
@@ -41,7 +42,7 @@ export default function LandingPage() {
                 </span>
               </h1>
               <p className="mx-auto max-w-2xl text-xl font-medium text-blue-100 md:text-2xl">
-                EMT-B Core with 45 chapters, ChapterFlashEMT spaced repetition, and PCR Trainer Pro. <br className="hidden sm:block" />
+                EMT-B Core with 45 chapters, ChapterFlashEMT spaced repetition, and PCR Report Sim. <br className="hidden sm:block" />
                 <span className="text-white">Everything you need to reinforce classroom learning, build real skills, and pass the NREMT.</span>
               </p>
             </div>
@@ -101,8 +102,14 @@ export default function LandingPage() {
             <Card className="group relative overflow-hidden border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 transition-all hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
               <CardHeader className="relative">
-                <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
-                  <TrendingUp className="h-6 w-6" />
+                <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-lg overflow-hidden bg-white">
+                  <Image 
+                    src="/images/EmeritaclinicalEMT-b.jpeg" 
+                    alt="EMT-B Core Logo" 
+                    width={64} 
+                    height={64}
+                    className="object-contain"
+                  />
                 </div>
                 <CardTitle className="text-2xl font-bold text-white">EMT-B Core</CardTitle>
                 <p className="text-slate-400">Complete textbook companion with 45 chapters and 675+ built-in flashcards.</p>
@@ -129,8 +136,14 @@ export default function LandingPage() {
             <Card className="group relative overflow-hidden border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 transition-all hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
               <CardHeader className="relative">
-                <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/10 text-purple-400">
-                  <Sparkles className="h-6 w-6" />
+                <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-lg overflow-hidden bg-white">
+                  <Image 
+                    src="/images/EmeritaClinicalChapterflashlogo.jpeg" 
+                    alt="ChapterFlashEMT Logo" 
+                    width={64} 
+                    height={64}
+                    className="object-contain"
+                  />
                 </div>
                 <CardTitle className="text-2xl font-bold text-white">ChapterFlashEMT</CardTitle>
                 <p className="text-slate-400">Spaced-repetition system with 700+ prompts across all 45 chapters.</p>
@@ -153,14 +166,20 @@ export default function LandingPage() {
               </CardContent>
             </Card>
 
-            {/* PCR Trainer PRO */}
+            {/* PCR Report Sim */}
             <Card className="group relative overflow-hidden border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 transition-all hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
               <CardHeader className="relative">
-                <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
-                  <Users className="h-6 w-6" />
+                <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-lg overflow-hidden bg-white">
+                  <Image 
+                    src="/images/EmeritaClinicalPCRSimlogo.jpeg" 
+                    alt="PCR Report Sim Logo" 
+                    width={64} 
+                    height={64}
+                    className="object-contain"
+                  />
                 </div>
-                <CardTitle className="text-2xl font-bold text-white">PCR Trainer Pro</CardTitle>
+                <CardTitle className="text-2xl font-bold text-white">PCR Report Sim</CardTitle>
                 <p className="text-slate-400">Practice Patient Care Reports with 50+ realistic scenarios and AI scoring.</p>
               </CardHeader>
               <CardContent className="relative">
